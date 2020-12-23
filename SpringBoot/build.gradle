@@ -1,0 +1,76 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+		maven {
+			url "http://packages.confluent.io/maven/"
+		}
+		maven {
+			url = uri("https://jitpack.io")
+		}
+	}
+	dependencies {
+		classpath "com.github.imflog:kafka-schema-registry-gradle-plugin:1.1.0"
+	}
+}
+plugins {
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.smartcat.internship'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '8'
+def relativeAvroSchemasLocation = '/home/cydonia/Documents/Praksa/SpringBoot/src/main/java/com/smartcat/internship/airplaneservices/avro/schemas/v1'
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'http://packages.confluent.io/maven/'
+	}
+	maven {
+		url "https://plugins.gradle.org/m2/"
+	}
+	maven {
+		url = uri("https://jitpack.io")
+	}
+}
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.springframework', name: 'spring-context', version: '5.1.6.RELEASE'
+
+	compile('org.apache.kafka:kafka-clients:2.5.0')
+	implementation'io.confluent:kafka-avro-serializer:6.0.0'
+
+	compile group: 'org.apache.avro', name: 'avro-tools', version: '1.10.0'
+	compile('org.apache.avro:avro:1.10.0')
+
+	testCompile group: 'org.slf4j', name: 'slf4j-nop', version: '1.7.21'
+
+
+}
+
+
+test {
+	useJUnitPlatform()
+}
+apply plugin: "com.github.imflog.kafka-schema-registry-gradle-plugin"
+
+schemaRegistry {
+	url = 'http://localhost:8081'
+	download {
+		// extension of the output file depends on the the schema type
+		//subject('coordinates', '')
+		subject('flightRequest', relativeAvroSchemasLocation)
+		subject('flightResponse', relativeAvroSchemasLocation)
+		//subject('flightStatus', '/home/cydonia/Documents/Praksa/SpringBoot/src/main/java/com/smartcat/internship/airplaneservices/avro/schemas/v1')
+	}
+}
+
