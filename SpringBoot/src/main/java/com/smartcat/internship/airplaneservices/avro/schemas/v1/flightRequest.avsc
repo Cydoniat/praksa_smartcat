@@ -1,1 +1,0 @@
-{"type":"record","name":"FlightRequest","namespace":"avro.schemas.v1","fields":[{"name":"flightCode","type":"string"},{"name":"fromCoordinates","type":["Coordinates","null"]},{"name":"toCoordinates","type":["Coordinates","null"]}]}
