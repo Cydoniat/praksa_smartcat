@@ -1,0 +1,1 @@
+{"type":"record","name":"FlightResponse","namespace":"avro.schemas.v1","fields":[{"name":"flightCode","type":{"type":"string","avro.java.string":"String"}},{"name":"distance","type":"float"},{"name":"flightTime","type":"int"},{"name":"flightStatus","type":["FlightStatus","null"]}]}

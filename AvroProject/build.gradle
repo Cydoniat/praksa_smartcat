@@ -51,14 +51,15 @@ test {
 
 apply plugin: "com.github.imflog.kafka-schema-registry-gradle-plugin"
 
+def pathToSchemas = "${projectDir}/src/main/resources/avro.schemas.v1"
+
 schemaRegistry {
     url = 'http://localhost:8081'
     register {
-        subject('coordinates', '/home/cydonia/Documents/Praksa/AvroProject/src/main/resources/avro.schemas.v1/coordinates.avsc', "AVRO")
-        subject('flightRequest', '/home/cydonia/Documents/Praksa/AvroProject/src/main/resources/avro.schemas.v1/flightRequest.avsc', "AVRO").addReference('coordinates', 'coordinates', 1)
-        subject('flightStatus', '/home/cydonia/Documents/Praksa/AvroProject/src/main/resources/avro.schemas.v1/flightStatus.avsc', "AVRO")
-        subject('flightResponse', '/home/cydonia/Documents/Praksa/AvroProject/src/main/resources/avro.schemas.v1/flightResponse.avsc', "AVRO").addReference('flightStatus', 'flightStatus', 1)
-
+        subject('com.smartcat.internship.v1.coordinates', "${pathToSchemas}/coordinates.avsc", "AVRO")
+        subject('com.smartcat.internship.v1.flightRequest', "${pathToSchemas}/flightRequest.avsc", "AVRO").addReference('com.smartcat.internship.v1.coordinates', 'com.smartcat.internship.v1.coordinates', 2)
+        subject('com.smartcat.internship.v1.flightStatus', "${pathToSchemas}/flightStatus.avsc", "AVRO")
+        subject('com.smartcat.internship.v1.flightResponse', "${pathToSchemas}/flightResponse.avsc", "AVRO").addReference('com.smartcat.internship.v1.flightStatus', 'com.smartcat.internship.v1.flightStatus', 2)
     }
 }
 

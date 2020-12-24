@@ -1,0 +1,1 @@
+{"type":"record","name":"Coordinates","namespace":"avro.schemas.v1","fields":[{"name":"lat","type":"float"},{"name":"lon","type":"float"}]}

@@ -5,7 +5,10 @@
     "fields": [
         {
             "name": "flightCode",
-            "type": "string"
+            "type": {
+                    "type": "string",
+                    "avro.java.string": "String"
+            }
         },
         {
             "name": "distance",

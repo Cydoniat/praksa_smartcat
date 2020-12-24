@@ -1,17 +1,8 @@
 {
-    "type": "record",
+    "type": "enum",
     "namespace": "avro.schemas.v1",
     "name": "FlightStatus",
-    "fields": [
-        {
-            "name": "flightStatus",
-            "type": {
-            	"type": "enum",
-                "name": "Status",
-                "symbols": [ "APPROVED", "REJECTED"]
-            }
-        }
-    ]
+    "symbols": [ "APPROVED", "REJECTED"]
 }
 
 

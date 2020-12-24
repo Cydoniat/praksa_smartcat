@@ -3,7 +3,10 @@
      "namespace": "avro.schemas.v1",
      "name": "FlightRequest",
      "fields": [
-	{ "name": "flightCode", "type": "string" },
+	{ "name": "flightCode", "type": {
+                                    "type": "string",
+                                    "avro.java.string": "String"
+                            } },
 	{ "name": "fromCoordinates", "type": ["avro.schemas.v1.Coordinates", "null"] },
 	{ "name": "toCoordinates", "type": ["avro.schemas.v1.Coordinates", "null"] }
      ]
