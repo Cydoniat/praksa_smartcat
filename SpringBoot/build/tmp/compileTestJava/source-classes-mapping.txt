@@ -1,2 +1,0 @@
-com/smartcat/internship/airplaneservices/AirplaneServicesApplicationTests.java
- com.smartcat.internship.airplaneservices.AirplaneServicesApplicationTests
