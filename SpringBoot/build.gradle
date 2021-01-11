@@ -38,8 +38,9 @@ repositories {
 }
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'org.springframework.plugin', name: 'spring-plugin-core', version: '2.0.0.RELEASE'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	compile group: 'org.springframework', name: 'spring-context', version: '5.1.6.RELEASE'
+	compile group: 'org.springframework', name: 'spring-context', version: '5.3.2'
 	compile('org.apache.kafka:kafka-clients:2.5.0')
 	implementation 'io.confluent:kafka-avro-serializer:6.0.0'
 	implementation('org.apache.avro:avro:1.10.1')
@@ -65,3 +66,5 @@ schemaRegistry {
         subject('com.smartcat.internship.v1.flightStatus', relativeAvroSchemasLocation)
     }
 }
+
+generateAvroJava.enabled = false

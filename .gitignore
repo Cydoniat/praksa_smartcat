@@ -124,4 +124,8 @@ gradle-app.setting
 ### Gradle Patch ###
 **/build/
 
+### My create-topic.sh script ###
+Docker/create-topic.sh
+
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij,gradle

@@ -57,9 +57,9 @@ schemaRegistry {
     url = 'http://localhost:8081'
     register {
         subject('com.smartcat.internship.v1.coordinates', "${pathToSchemas}/coordinates.avsc", "AVRO")
-        subject('com.smartcat.internship.v1.flightRequest', "${pathToSchemas}/flightRequest.avsc", "AVRO").addReference('com.smartcat.internship.v1.coordinates', 'com.smartcat.internship.v1.coordinates', 2)
+        subject('com.smartcat.internship.v1.flightRequest', "${pathToSchemas}/flightRequest.avsc", "AVRO").addReference('com.smartcat.internship.v1.coordinates', 'com.smartcat.internship.v1.coordinates', 1)
         subject('com.smartcat.internship.v1.flightStatus', "${pathToSchemas}/flightStatus.avsc", "AVRO")
-        subject('com.smartcat.internship.v1.flightResponse', "${pathToSchemas}/flightResponse.avsc", "AVRO").addReference('com.smartcat.internship.v1.flightStatus', 'com.smartcat.internship.v1.flightStatus', 2)
+        subject('com.smartcat.internship.v1.flightResponse', "${pathToSchemas}/flightResponse.avsc", "AVRO").addReference('com.smartcat.internship.v1.flightStatus', 'com.smartcat.internship.v1.flightStatus', 1)
     }
 }
 
